@@ -15,6 +15,8 @@ public partial class VeeratestidbContext : DbContext
     {
     }
 
+    public virtual DbSet<Kissat> Kissats { get; set; }
+
     public virtual DbSet<Koirat> Koirats { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -23,6 +25,25 @@ public partial class VeeratestidbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<Kissat>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__Kissat__3214EC27F3C3C423");
+
+            entity.ToTable("Kissat");
+
+            entity.Property(e => e.Id)
+                .ValueGeneratedNever()
+                .HasColumnName("ID");
+            entity.Property(e => e.Color)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("color");
+            entity.Property(e => e.Name)
+                .HasMaxLength(255)
+                .IsUnicode(false)
+                .HasColumnName("name");
+        });
+
         modelBuilder.Entity<Koirat>(entity =>
         {
             entity
