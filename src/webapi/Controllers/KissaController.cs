@@ -19,9 +19,11 @@ namespace webapi.Controllers
         }
 
         // GET: Kissa
-        public async Task<IActionResult> Index()
+        public IEnumerable<Kissat> Index()
         {
-            return View(await _context.Kissats.ToListAsync());
+            // return View(await _context.Kissats.ToListAsync());
+            return _context.Kissats.ToArray();
+
         }
 
         // GET: Kissa/Details/5
