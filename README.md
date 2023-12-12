@@ -1,1 +1,0 @@
-# azuresql-dotnet-testiprojekti
